@@ -51,7 +51,7 @@ Edit config/application.config.php:
 ...
 ```
 
-5.Add the Entity folder (will contain generated entity classes)
+5.Add the Entity folder (will contain entity classes)
 
 ```
 mkdir module/Application/src/Application/Entity
@@ -110,6 +110,40 @@ return array(
           'dbname'   => 'database',
 )))));
 ```
+
+8.Create the EntityBase files
+TODO
+
+9.Create the Entity classes
+TODO
+
+10.Validate the schema (will fail as you don't have DB setup)
+
+```
+./vendor/bin/doctrine-module orm:validate-schema
+```
+
+11.Create the schema (will apply the schema to the DB)
+
+To initially create the schema:
+
+```
+./vendor/bin/doctrine-module orm:schema-tool:create
+```
+
+To get sql
+
+```
+./vendor/bin/doctrine-module orm:schema-tool:create --dump-sql
+```
+
+
+TODO
+[] - repository pattern and repo classes per model
+[] - how to validate models?
+[] - where to put hydrator/data extractor?
+[] - service class? or repo?
+[] - abstract repo class for models to do versioned selects and inserts
 
 Links
 -----
