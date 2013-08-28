@@ -51,6 +51,66 @@ Edit config/application.config.php:
 ...
 ```
 
+5.Add the Entity folder (will contain generated entity classes)
+
+```
+mkdir module/Application/src/Application/Entity
+```
+
+6.Add the Doctrine Driver to application config
+
+Edit config/module.config.php:
+
+```
+return array(
+    'doctrine' => array(
+        'driver' => array(
+            'application_entities' => array(
+                'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Application/Entity')
+            ),
+
+            'orm_default' => array(
+                'drivers' => array(
+                    'Application\Entity' => 'application_entities'
+                )
+            )
+        )
+    ),
+    ...
+```
+
+7.Add database config for Doctrine
+
+New file local.php:
+
+```
+<?php
+
+return array(
+);
+```
+
+New file config/autoload/doctrine.local.php (for local MySql):
+
+```
+<?php
+
+return array(
+  'doctrine' => array(
+    'connection' => array(
+      'orm_default' => array(
+        'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
+        'params' => array(
+          'host'     => 'localhost',
+          'port'     => '3306',
+          'user'     => 'username',
+          'password' => 'password',
+          'dbname'   => 'database',
+)))));
+```
+
 Links
 -----
 * [ZF2](http://framework.zend.com/)
