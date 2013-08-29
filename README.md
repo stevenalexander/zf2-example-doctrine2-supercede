@@ -139,11 +139,10 @@ To get sql
 
 
 TODO
+[] - Convert to historic table model as supersede everything in main table is not possible due to limitation of ORM to primary key (in versioned entity, primary db key is surrogate db key, natural key is not unique and cant be used for associations)
 [] - repository pattern and repo classes per model
 [] - how to validate models?
 [] - where to put hydrator/data extractor?
-[] - service class? or repo?
-[] - abstract repo class for models to do versioned selects and inserts
 
 Links
 -----
